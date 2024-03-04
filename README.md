@@ -15,6 +15,9 @@ This is a simple web application built with Express.js, Socket.IO, and MongoDB. 
 - MongoDB: NoSQL database used for storing submitted data.
 - HTML/CSS: Frontend languages used for structuring and styling the webpage.
 
+<img width="1080" alt="image" src="https://github.com/dipesh6264/IBP_task/assets/134261406/4e0c73df-f5c4-4cf3-8a93-0f5f00591a05">
+
+
 ## Installation
 
 1. Clone this repository:
