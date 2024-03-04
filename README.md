@@ -20,7 +20,7 @@ This is a simple web application built with Express.js, Socket.IO, and MongoDB. 
 1. Clone this repository:
 
 ```
-git clone <repository-url>
+git clone https://github.com/dipesh6264/IBP_task.git
 ```
 
 2. Install dependencies:
