@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-time Data</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Real-time Data</h1>
+  <div id="data-container"></div>
+  <form id="data-form">
+    <input type="text" id="data-input" placeholder="Enter data">
+    <button type="submit">Submit</button>
+  </form>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    // Function to add data to the page
+    function addDataToPage(message) {
+      const dataContainer = document.getElementById('data-container');
+      const newDataElement = document.createElement('div');
+      newDataElement.textContent = message;
+      dataContainer.appendChild(newDataElement);
+    }
+
+    // Listen for initial data from the server
+    socket.on('initialData', (data) => {
+      data.forEach((item) => {
+        addDataToPage(item.message);
+      });
+    });
+
+    // Listen for new data from the server
+    socket.on('newData', (message) => {
+      addDataToPage(message);
+    });
+
+    // Submit form data to the server
+    document.getElementById('data-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const newData = document.getElementById('data-input').value;
+      socket.emit('newData', newData);
+      document.getElementById('data-input').value = '';
+    });
+  </script>
+</body>
+</html>
